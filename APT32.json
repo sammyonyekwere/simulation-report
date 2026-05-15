@@ -1,0 +1,663 @@
+	
+name	"APT32_Simulation"
+host_group	
+0	
+paw	"dprnmw"
+sleep_min	30
+sleep_max	60
+watchdog	0
+group	"red"
+architecture	"amd64"
+platform	"linux"
+server	"http://192.168.119.129:8888"
+upstream_dest	"http://192.168.119.129:8888"
+username	"osboxes"
+location	"/home/osboxes/splunkd"
+pid	1927
+ppid	1886
+trusted	true
+executors	
+0	"proc"
+1	"sh"
+privilege	"User"
+exe_name	"splunkd"
+host	"0SC"
+contact	"HTTP"
+proxy_receivers	{}
+proxy_chain	[]
+origin_link_id	""
+deadman_enabled	true
+available_contacts	
+0	"HTTP"
+host_ip_addrs	
+0	"192.168.119.128"
+display_name	"0SC$osboxes"
+created	"2026-05-15T11:01:45Z"
+last_seen	"2026-05-15T14:40:19Z"
+links	
+0	
+id	"f3883ee0-f4e7-428f-a22c-eb0fd6b82db5"
+paw	"dprnmw"
+command	"PiAkSE9NRS8uYmFzaF9oaXN0b3J5ICYmIHVuc2V0IEhJU1RGSUxF"
+plaintext_command	"PiAkSE9NRS8uYmFzaF9oaXN0b3J5ICYmIHVuc2V0IEhJU1RGSUxF"
+status	0
+score	0
+jitter	0
+decide	"2026-05-15T11:01:45Z"
+pin	0
+pid	"1934"
+facts	[]
+relationships	[]
+used	[]
+unique	"f3883ee0-f4e7-428f-a22c-eb0fd6b82db5"
+collect	"2026-05-15T11:01:45Z"
+finish	"2026-05-15T11:01:45Z"
+ability	
+ability_id	"43b3754c-def4-4699-a673-1d85648fda6a"
+tactic	"defense-evasion"
+technique_name	"Indicator Removal on Host: Clear Command History"
+technique_id	"T1070.003"
+name	"Avoid logs"
+description	"Stop terminal from logging history"
+executors	
+0	
+name	"sh"
+platform	"darwin"
+command	"> $HOME/.bash_history && unset HISTFILE"
+code	null
+language	null
+build_target	null
+payloads	[]
+uploads	[]
+timeout	60
+parsers	[]
+cleanup	[]
+variations	[]
+additional_info	{}
+1	
+name	"sh"
+platform	"linux"
+command	"> $HOME/.bash_history && unset HISTFILE"
+code	null
+language	null
+build_target	null
+payloads	[]
+uploads	[]
+timeout	60
+parsers	[]
+cleanup	[]
+variations	[]
+additional_info	{}
+2	
+name	"psh"
+platform	"windows"
+command	"Clear-History;Clear"
+code	null
+language	null
+build_target	null
+payloads	[]
+uploads	[]
+timeout	60
+parsers	[]
+cleanup	[]
+variations	[]
+additional_info	{}
+requirements	[]
+privilege	null
+repeatable	false
+buckets	
+0	"defense-evasion"
+additional_info	{}
+access	{}
+singleton	false
+plugin	"stockpile"
+delete_payload	true
+executor	
+name	"sh"
+platform	"linux"
+command	"> $HOME/.bash_history && unset HISTFILE"
+code	null
+language	null
+build_target	null
+payloads	[]
+uploads	[]
+timeout	60
+parsers	[]
+cleanup	[]
+variations	[]
+additional_info	{}
+cleanup	0
+visibility	
+score	50
+adjustments	[]
+host	"0SC"
+output	"False"
+deadman	false
+agent_reported_time	"2026-05-15T11:01:45Z"
+pending_contact	"HTTP"
+status	"alive"
+start	"2026-05-15T14:28:23Z"
+steps	
+dprnmw	
+steps	
+0	
+link_id	"7545487e-e68c-4b61-8767-a65f529fb730"
+ability_id	"7873d442-06e3-4fb7-afe3-3f222334f76a"
+command	"uname -a; cat /etc/os-release; lscpu"
+plaintext_command	"uname -a; cat /etc/os-release; lscpu"
+delegated	"2026-05-15T14:28:23Z"
+run	"2026-05-15T14:29:17Z"
+status	0
+platform	"linux"
+executor	"sh"
+pid	3595
+description	"Collect kernel version, distribution and CPU class to fingerprint the host"
+name	"System Information Discovery"
+attack	
+tactic	"discovery"
+technique_name	"System Information Discovery"
+technique_id	"T1082"
+output	
+stdout	'Linux 0SC 6.17.10+kali-amd64 #1 SMP PREEMPT_DYNAMIC Kali 6.17.10-1kali1 (2025-12-08) x86_64 GNU/LinuxPRETTY_NAME="Kali GNU/Linux Rolling"NAME="Kali GNU/Linux"VERSION_ID="2025.4"VERSION="2025.4"VERSION_CODENAME=kali-rollingID=kaliID_LIKE=debianHOME_URL="https://www.kali.org/"SUPPORT_URL="https://forums.kali.org/"BUG_REPORT_URL="https://bugs.kali.org/"ANSI_COLOR="1;31"Architecture:                            x86_64CPU op-mode(s):                          32-bit, 64-bitAddress sizes:                           45 bits physical, 48 bits virtualByte Order:                              Little EndianCPU(s):                                  8On-line CPU(s) list:                     0-7Vendor ID:                               GenuineIntelModel name:                              11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHzCPU family:                              6Model:                                   140Thread(s) per core:                      1Core(s) per socket:                      2Socket(s):                               4Stepping:                                1BogoMIPS:                                2764.80Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch ssbd ibrs ibpb stibp ibrs_enhanced fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves user_shstk arat avx512vbmi umip pku ospke avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid movdiri movdir64b fsrm avx512_vp2intersect md_clear flush_l1d arch_capabilitiesHypervisor vendor:                       VMwareVirtualization type:                     fullL1d cache:                               384 KiB (8 instances)L1i cache:                               256 KiB (8 instances)L2 cache:                                10 MiB (8 instances)L3 cache:                                32 MiB (4 instances)NUMA node(s):                            1NUMA node0 CPU(s):                       0-7Vulnerability Gather data sampling:      Unknown: Dependent on hypervisor statusVulnerability Ghostwrite:                Not affectedVulnerability Indirect target selection: Mitigation; Aligned branch/return thunksVulnerability Itlb multihit:             KVM: Mitigation: VMX unsupportedVulnerability L1tf:                      Not affectedVulnerability Mds:                       Not affectedVulnerability Meltdown:                  Not affectedVulnerability Mmio stale data:           Not affectedVulnerability Old microcode:             Not affectedVulnerability Reg file data sampling:    Not affectedVulnerability Retbleed:                  Not affectedVulnerability Spec rstack overflow:      Not affectedVulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctlVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitizationVulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI SW loop, KVM SW loopVulnerability Srbds:                     Not affectedVulnerability Tsa:                       Not affectedVulnerability Tsx async abort:           Not affectedVulnerability Vmscape:                   Not affected'
+stderr	""
+exit_code	"0"
+agent_reported_time	"2026-05-15T14:29:17Z"
+1	
+link_id	"373f406b-13e6-40a5-be03-04dba3d7b845"
+ability_id	"d7073812-e14f-4838-8de3-42248b471ae5"
+command	"ls -la /home; ls -la /opt; find /var/log -type f 2>/dev/null | head -20"
+plaintext_command	"ls -la /home; ls -la /opt; find /var/log -type f 2>/dev/null | head -20"
+delegated	"2026-05-15T14:29:18Z"
+run	"2026-05-15T14:30:16Z"
+status	0
+platform	"linux"
+executor	"sh"
+pid	3606
+description	"Enumerate home directories, /opt mounts and log paths"
+name	"File and Directory Discovery"
+attack	
+tactic	"discovery"
+technique_name	"File and Directory Discovery"
+technique_id	"T1083"
+output	
+stdout	"total 16drwxr-xr-x  4 root    root    4096 Dec 10 03:25 .drwxr-xr-x 18 root    root    4096 Dec 10 03:47 ..drwx------ 18 osboxes osboxes 4096 May 15 07:01 osboxesdrwx------ 18 sammy   sammy   4096 Dec 17 08:41 sammytotal 12drwxr-xr-x  3 root root 4096 May 29  2025 .drwxr-xr-x 18 root root 4096 Dec 10 03:47 ..drwxr-xr-x  3 root root 4096 May 29  2025 microsoft/var/log/vmware-network.5.log/var/log/vmware-vmsvc-root.1.log/var/log/vmware-vmsvc-root.log/var/log/boot.log/var/log/stunnel4/stunnel.log/var/log/Xorg.0.log/var/log/vmware-vmtoolsd-osboxes.log/var/log/vmware-vmsvc-root.3.log/var/log/boot.log.1/var/log/vmware-network.9.log/var/log/alternatives.log.2.gz/var/log/postgresql/postgresql-18-main.log/var/log/postgresql/postgresql-17-main.log/var/log/postgresql/postgresql-18-main.log.1/var/log/postgresql/postgresql-18-main.log.3.gz/var/log/postgresql/postgresql-17-main.log.1/var/log/postgresql/postgresql-18-main.log.2.gz/var/log/vmware-vmtoolsd-kali.log/var/log/macchanger.log/var/log/boot.log.3"
+stderr	""
+exit_code	"0"
+agent_reported_time	"2026-05-15T14:30:16Z"
+2	
+link_id	"dbebae67-f68d-40e1-85d9-7d9dc4cb6d80"
+ability_id	"a86ad6e0-593c-45cf-a9ed-96f1f62b1023"
+command	"whoami; id; who"
+plaintext_command	"whoami; id; who"
+delegated	"2026-05-15T14:30:18Z"
+run	"2026-05-15T14:31:18Z"
+status	0
+platform	"linux"
+executor	"sh"
+pid	3620
+description	"Identify the effective user, group memberships and currently-logged-in users"
+name	"User Account Discovery"
+attack	
+tactic	"discovery"
+technique_name	"System Owner/User Discovery"
+technique_id	"T1033"
+output	
+stdout	"osboxesuid=1001(osboxes) gid=1001(osboxes) groups=1001(osboxes),0(root),4(adm),20(dialout),21(fax),24(cdrom),25(floppy),26(tape),27(sudo),29(audio),30(dip),44(video),46(plugdev),100(users),101(netdev),103(scanner),125(lpadmin),990(sambashare)osboxes  seat0        2026-05-15 07:01 (:0)"
+stderr	""
+exit_code	"0"
+agent_reported_time	"2026-05-15T14:31:18Z"
+finish	null
+planner	"atomic"
+adversary	
+adversary_id	"e8a910f4-5a48-4eda-8616-c96b36f9ffb8"
+name	"APT32 – Simulation"
+description	"Simulates the host-fingerprinting reconnaissance pattern associated with APT32 (OceanLotus), based on MITRE ATT&CK group G0050."
+atomic_ordering	
+0	"7873d442-06e3-4fb7-afe3-3f222334f76a"
+1	"d7073812-e14f-4838-8de3-42248b471ae5"
+2	"a86ad6e0-593c-45cf-a9ed-96f1f62b1023"
+objective	"495a9828-cab1-44dd-a0ca-66e58177d8cc"
+tags	[]
+has_repeatable_abilities	false
+plugin	""
+jitter	"2/8"
+objectives	
+id	"495a9828-cab1-44dd-a0ca-66e58177d8cc"
+name	"default"
+description	"This is a default objective that runs forever."
+goals	
+0	
+target	"exhaustion"
+value	"complete"
+count	1048576
+operator	"=="
+achieved	false
+percentage	0
+facts	
+0	
+unique	"file.sensitive.extensionwav"
+trait	"file.sensitive.extension"
+name	"file.sensitive.extension"
+value	"wav"
+created	"2026-05-15T10:51:18Z"
+score	1
+source	"ed32b9c3-9593-4c33-b0db-e2007315096b"
+origin_type	"IMPORTED"
+links	[]
+relationships	[]
+limit_count	-1
+collected_by	[]
+technique_id	""
+1	
+unique	"file.sensitive.extensionyml"
+trait	"file.sensitive.extension"
+name	"file.sensitive.extension"
+value	"yml"
+created	"2026-05-15T10:51:18Z"
+score	1
+source	"ed32b9c3-9593-4c33-b0db-e2007315096b"
+origin_type	"IMPORTED"
+links	[]
+relationships	[]
+limit_count	-1
+collected_by	[]
+technique_id	""
+2	
+unique	"file.sensitive.extensionpng"
+trait	"file.sensitive.extension"
+name	"file.sensitive.extension"
+value	"png"
+created	"2026-05-15T10:51:18Z"
+score	1
+source	"ed32b9c3-9593-4c33-b0db-e2007315096b"
+origin_type	"IMPORTED"
+links	[]
+relationships	[]
+limit_count	-1
+collected_by	[]
+technique_id	""
+3	
+unique	"server.malicious.urlkeyloggedsite.com"
+trait	"server.malicious.url"
+name	"server.malicious.url"
+value	"keyloggedsite.com"
+created	"2026-05-15T10:51:18Z"
+score	1
+source	"ed32b9c3-9593-4c33-b0db-e2007315096b"
+origin_type	"IMPORTED"
+links	[]
+relationships	[]
+limit_count	-1
+collected_by	[]
+technique_id	""
+4	
+unique	'host.file.path//www.kali.org/"'
+trait	"host.file.path"
+name	"host.file.path"
+value	'//www.kali.org/"'
+created	"2026-05-15T14:29:17Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"7545487e-e68c-4b61-8767-a65f529fb730"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1082"
+5	
+unique	'host.file.path//forums.kali.org/"'
+trait	"host.file.path"
+name	"host.file.path"
+value	'//forums.kali.org/"'
+created	"2026-05-15T14:29:17Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"7545487e-e68c-4b61-8767-a65f529fb730"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1082"
+6	
+unique	'host.file.path//bugs.kali.org/"'
+trait	"host.file.path"
+name	"host.file.path"
+value	'//bugs.kali.org/"'
+created	"2026-05-15T14:29:17Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"7545487e-e68c-4b61-8767-a65f529fb730"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1082"
+7	
+unique	"host.file.path/var/log/vmware-network.5.log"
+trait	"host.file.path"
+name	"host.file.path"
+value	"/var/log/vmware-network.5.log"
+created	"2026-05-15T14:30:16Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"373f406b-13e6-40a5-be03-04dba3d7b845"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1083"
+8	
+unique	"host.file.path/var/log/vmware-vmsvc-root.1.log"
+trait	"host.file.path"
+name	"host.file.path"
+value	"/var/log/vmware-vmsvc-root.1.log"
+created	"2026-05-15T14:30:16Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"373f406b-13e6-40a5-be03-04dba3d7b845"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1083"
+9	
+unique	"host.file.path/var/log/vmware-vmsvc-root.log"
+trait	"host.file.path"
+name	"host.file.path"
+value	"/var/log/vmware-vmsvc-root.log"
+created	"2026-05-15T14:30:16Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"373f406b-13e6-40a5-be03-04dba3d7b845"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1083"
+10	
+unique	"host.file.path/var/log/boot.log"
+trait	"host.file.path"
+name	"host.file.path"
+value	"/var/log/boot.log"
+created	"2026-05-15T14:30:16Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"373f406b-13e6-40a5-be03-04dba3d7b845"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1083"
+11	
+unique	"host.file.path/var/log/stunnel4/stunnel.log"
+trait	"host.file.path"
+name	"host.file.path"
+value	"/var/log/stunnel4/stunnel.log"
+created	"2026-05-15T14:30:16Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"373f406b-13e6-40a5-be03-04dba3d7b845"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1083"
+12	
+unique	"host.file.path/var/log/Xorg.0.log"
+trait	"host.file.path"
+name	"host.file.path"
+value	"/var/log/Xorg.0.log"
+created	"2026-05-15T14:30:16Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"373f406b-13e6-40a5-be03-04dba3d7b845"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1083"
+13	
+unique	"host.file.path/var/log/vmware-vmtoolsd-osboxes.log"
+trait	"host.file.path"
+name	"host.file.path"
+value	"/var/log/vmware-vmtoolsd-osboxes.log"
+created	"2026-05-15T14:30:16Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"373f406b-13e6-40a5-be03-04dba3d7b845"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1083"
+14	
+unique	"host.file.path/var/log/vmware-vmsvc-root.3.log"
+trait	"host.file.path"
+name	"host.file.path"
+value	"/var/log/vmware-vmsvc-root.3.log"
+created	"2026-05-15T14:30:16Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"373f406b-13e6-40a5-be03-04dba3d7b845"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1083"
+15	
+unique	"host.file.path/var/log/boot.log.1"
+trait	"host.file.path"
+name	"host.file.path"
+value	"/var/log/boot.log.1"
+created	"2026-05-15T14:30:16Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"373f406b-13e6-40a5-be03-04dba3d7b845"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1083"
+16	
+unique	"host.file.path/var/log/vmware-network.9.log"
+trait	"host.file.path"
+name	"host.file.path"
+value	"/var/log/vmware-network.9.log"
+created	"2026-05-15T14:30:16Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"373f406b-13e6-40a5-be03-04dba3d7b845"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1083"
+17	
+unique	"host.file.path/var/log/alternatives.log.2.gz"
+trait	"host.file.path"
+name	"host.file.path"
+value	"/var/log/alternatives.log.2.gz"
+created	"2026-05-15T14:30:16Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"373f406b-13e6-40a5-be03-04dba3d7b845"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1083"
+18	
+unique	"host.file.path/var/log/postgresql/postgresql-18-main.log"
+trait	"host.file.path"
+name	"host.file.path"
+value	"/var/log/postgresql/postgresql-18-main.log"
+created	"2026-05-15T14:30:16Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"373f406b-13e6-40a5-be03-04dba3d7b845"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1083"
+19	
+unique	"host.file.path/var/log/postgresql/postgresql-17-main.log"
+trait	"host.file.path"
+name	"host.file.path"
+value	"/var/log/postgresql/postgresql-17-main.log"
+created	"2026-05-15T14:30:16Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"373f406b-13e6-40a5-be03-04dba3d7b845"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1083"
+20	
+unique	"host.file.path/var/log/postgresql/postgresql-18-main.log.1"
+trait	"host.file.path"
+name	"host.file.path"
+value	"/var/log/postgresql/postgresql-18-main.log.1"
+created	"2026-05-15T14:30:16Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"373f406b-13e6-40a5-be03-04dba3d7b845"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1083"
+21	
+unique	"host.file.path/var/log/postgresql/postgresql-18-main.log.3.gz"
+trait	"host.file.path"
+name	"host.file.path"
+value	"/var/log/postgresql/postgresql-18-main.log.3.gz"
+created	"2026-05-15T14:30:16Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"373f406b-13e6-40a5-be03-04dba3d7b845"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1083"
+22	
+unique	"host.file.path/var/log/postgresql/postgresql-17-main.log.1"
+trait	"host.file.path"
+name	"host.file.path"
+value	"/var/log/postgresql/postgresql-17-main.log.1"
+created	"2026-05-15T14:30:16Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"373f406b-13e6-40a5-be03-04dba3d7b845"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1083"
+23	
+unique	"host.file.path/var/log/postgresql/postgresql-18-main.log.2.gz"
+trait	"host.file.path"
+name	"host.file.path"
+value	"/var/log/postgresql/postgresql-18-main.log.2.gz"
+created	"2026-05-15T14:30:16Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"373f406b-13e6-40a5-be03-04dba3d7b845"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1083"
+24	
+unique	"host.file.path/var/log/vmware-vmtoolsd-kali.log"
+trait	"host.file.path"
+name	"host.file.path"
+value	"/var/log/vmware-vmtoolsd-kali.log"
+created	"2026-05-15T14:30:16Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"373f406b-13e6-40a5-be03-04dba3d7b845"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1083"
+25	
+unique	"host.file.path/var/log/macchanger.log"
+trait	"host.file.path"
+name	"host.file.path"
+value	"/var/log/macchanger.log"
+created	"2026-05-15T14:30:16Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"373f406b-13e6-40a5-be03-04dba3d7b845"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1083"
+26	
+unique	"host.file.path/var/log/boot.log.3"
+trait	"host.file.path"
+name	"host.file.path"
+value	"/var/log/boot.log.3"
+created	"2026-05-15T14:30:16Z"
+score	1
+source	"0b847e76-8604-4a15-bd16-98aac777946d"
+origin_type	"LEARNED"
+links	
+0	"373f406b-13e6-40a5-be03-04dba3d7b845"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1083"
+skipped_abilities	
+0	
+dprnmw	[]
