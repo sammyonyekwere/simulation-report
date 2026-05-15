@@ -1,211 +1,249 @@
 	
-0	
-command	"ip a; ip r"
-plaintext_command	"ip a; ip r"
-delegated_timestamp	"2026-05-15T11:57:05Z"
-collected_timestamp	"2026-05-15T11:57:14Z"
-finished_timestamp	"2026-05-15T11:57:14Z"
-status	0
-platform	"linux"
-executor	"sh"
-pid	2456
-agent_metadata	
-paw	"dprnmw"
-group	"red"
-architecture	"amd64"
-username	"osboxes"
-location	"/home/osboxes/splunkd"
-pid	1927
-ppid	1886
-privilege	"User"
-host	"0SC"
-contact	"HTTP"
-created	"2026-05-15T11:01:45Z"
-ability_metadata	
-ability_id	"eca81598-4059-4365-8724-47e45829fcee"
-ability_name	"Network Discovery"
-ability_description	"Lists network interfaces and routing table on the target system."
-operation_metadata	
-operation_name	"APT29_Simulation"
-operation_start	"2026-05-15T11:57:05Z"
-operation_adversary	"APT29 – Credential Discovery"
-attack_metadata	
-tactic	"discovery"
-technique_name	"System Network Configuration Discovery"
-technique_id	"T1016"
-agent_reported_time	"2026-05-15T11:57:14Z"
-1	
-command	"ps -aux"
-plaintext_command	"ps -aux"
-delegated_timestamp	"2026-05-15T11:57:15Z"
-collected_timestamp	"2026-05-15T11:58:05Z"
-finished_timestamp	"2026-05-15T11:58:05Z"
-status	0
-platform	"linux"
-executor	"sh"
-pid	2463
-agent_metadata	
-paw	"dprnmw"
-group	"red"
-architecture	"amd64"
-username	"osboxes"
-location	"/home/osboxes/splunkd"
-pid	1927
-ppid	1886
-privilege	"User"
-host	"0SC"
-contact	"HTTP"
-created	"2026-05-15T11:01:45Z"
-ability_metadata	
-ability_id	"a353cf7a-2179-4775-bbe6-e2621f7a7e60"
-ability_name	"Process Discovery"
-ability_description	"Enumerate running processes"
-operation_metadata	
-operation_name	"APT29_Simulation"
-operation_start	"2026-05-15T11:57:05Z"
-operation_adversary	"APT29 – Credential Discovery"
-attack_metadata	
-tactic	"discovery"
-technique_name	"Process Discovery"
-technique_id	"T1057"
-agent_reported_time	"2026-05-15T11:58:05Z"
-2	
-command	"cut -d: -f1 /etc/passwd"
-plaintext_command	"cut -d: -f1 /etc/passwd"
-delegated_timestamp	"2026-05-15T11:58:10Z"
-collected_timestamp	"2026-05-15T11:58:50Z"
-finished_timestamp	"2026-05-15T11:58:50Z"
-status	0
-platform	"linux"
-executor	"sh"
-pid	2470
-agent_metadata	
-paw	"dprnmw"
-group	"red"
-architecture	"amd64"
-username	"osboxes"
-location	"/home/osboxes/splunkd"
-pid	1927
-ppid	1886
-privilege	"User"
-host	"0SC"
-contact	"HTTP"
-created	"2026-05-15T11:01:45Z"
-ability_metadata	
-ability_id	"803ed47b-391e-4e47-a3c2-0eb66f5770eb"
-ability_name	"Local Account Discovery"
-ability_description	"Enumerate all local user accounts from /etc/passwd"
-operation_metadata	
-operation_name	"APT29_Simulation"
-operation_start	"2026-05-15T11:57:05Z"
-operation_adversary	"APT29 – Credential Discovery"
-attack_metadata	
-tactic	"discovery"
-technique_name	"Account Discovery: Local Account"
-technique_id	"T1087.001"
-agent_reported_time	"2026-05-15T11:58:50Z"
-3	
-command	"getent passwd | awk -F: '$3==0 {print $1}'"
-plaintext_command	"getent passwd | awk -F: '$3==0 {print $1}'"
-delegated_timestamp	"2026-05-15T11:58:55Z"
-collected_timestamp	"2026-05-15T11:59:30Z"
-finished_timestamp	"2026-05-15T11:59:30Z"
-status	0
-platform	"linux"
-executor	"sh"
-pid	2476
-agent_metadata	
-paw	"dprnmw"
-group	"red"
-architecture	"amd64"
-username	"osboxes"
-location	"/home/osboxes/splunkd"
-pid	1927
-ppid	1886
-privilege	"User"
-host	"0SC"
-contact	"HTTP"
-created	"2026-05-15T11:01:45Z"
-ability_metadata	
-ability_id	"5c5d8fb5-a0d5-407e-a9c8-c16618cb898c"
-ability_name	"Logged-in Users with UID 0"
-ability_description	"Identify currently logged-in users with root privileges"
-operation_metadata	
-operation_name	"APT29_Simulation"
-operation_start	"2026-05-15T11:57:05Z"
-operation_adversary	"APT29 – Credential Discovery"
-attack_metadata	
-tactic	"discovery"
-technique_name	"Account Discovery: Local Account"
-technique_id	"T1087.001"
-agent_reported_time	"2026-05-15T11:59:30Z"
-4	
-command	"last -a | grep -v reboot"
-plaintext_command	"last -a | grep -v reboot"
-delegated_timestamp	"2026-05-15T11:59:35Z"
-collected_timestamp	"2026-05-15T12:00:19Z"
-finished_timestamp	"2026-05-15T12:00:19Z"
-status	0
-platform	"linux"
-executor	"sh"
-pid	2486
-agent_metadata	
-paw	"dprnmw"
-group	"red"
-architecture	"amd64"
-username	"osboxes"
-location	"/home/osboxes/splunkd"
-pid	1927
-ppid	1886
-privilege	"User"
-host	"0SC"
-contact	"HTTP"
-created	"2026-05-15T11:01:45Z"
-ability_metadata	
-ability_id	"921f2fb2-4dc8-4189-b34e-12c56e0f0aa7"
-ability_name	"Users with Remote Login History"
-ability_description	"Show users who have logged in remotely, excluding reboot entries"
-operation_metadata	
-operation_name	"APT29_Simulation"
-operation_start	"2026-05-15T11:57:05Z"
-operation_adversary	"APT29 – Credential Discovery"
-attack_metadata	
-tactic	"discovery"
-technique_name	"Account Discovery: Local Account"
-technique_id	"T1087.001"
-agent_reported_time	"2026-05-15T12:00:19Z"
-5	
-command	'find /home -name "id_rsa" 2>/dev/null || true'
-plaintext_command	'find /home -name "id_rsa" 2>/dev/null || true'
-delegated_timestamp	"2026-05-15T12:00:20Z"
-collected_timestamp	"2026-05-15T12:01:17Z"
-finished_timestamp	"2026-05-15T12:01:17Z"
-status	0
-platform	"linux"
-executor	"sh"
-pid	2506
-agent_metadata	
-paw	"dprnmw"
-group	"red"
-architecture	"amd64"
-username	"osboxes"
-location	"/home/osboxes/splunkd"
-pid	1927
-ppid	1886
-privilege	"User"
-host	"0SC"
-contact	"HTTP"
-created	"2026-05-15T11:01:45Z"
-ability_metadata	
-ability_id	"f30967b4-378e-42dc-886c-760a190dd3c6"
-ability_name	"Credential File Discovery"
-ability_description	"Locate KeePass databases and SSH private keys on disk"
-operation_metadata	
-operation_name	"APT29_Simulation"
-operation_start	"2026-05-15T11:57:05Z"
-operation_adversary	"APT29 – Credential Discovery"
-attack_metadata	
-tactic	"credential-access"
-technique_name	"Unsecured Credentials: Credentials In Files"
-technique_id	"T1552.001"
-agent_reported_time	"2026-05-15T12:01:17Z"
+[
+	{
+		"id": 0,
+		"command": "ip a; ip r",
+		"plaintext_command": "ip a; ip r",
+		"delegated_timestamp": "2026-05-15T11:57:05Z",
+		"collected_timestamp": "2026-05-15T11:57:14Z",
+		"finished_timestamp": "2026-05-15T11:57:14Z",
+		"status": 0,
+		"platform": "linux",
+		"executor": "sh",
+		"pid": 2456,
+		"agent_metadata": {
+			"paw": "dprnmw",
+			"group": "red",
+			"architecture": "amd64",
+			"username": "osboxes",
+			"location": "/home/osboxes/splunkd",
+			"pid": 1927,
+			"ppid": 1886,
+			"privilege": "User",
+			"host": "0SC",
+			"contact": "HTTP",
+			"created": "2026-05-15T11:01:45Z"
+		},
+		"ability_metadata": {
+			"ability_id": "eca81598-4059-4365-8724-47e45829fcee",
+			"ability_name": "Network Discovery",
+			"ability_description": "Lists network interfaces and routing table on the target system."
+		},
+		"operation_metadata": {
+			"operation_name": "APT29_Simulation",
+			"operation_start": "2026-05-15T11:57:05Z",
+			"operation_adversary": "APT29 – Credential Discovery"
+		},
+		"attack_metadata": {
+			"tactic": "discovery",
+			"technique_name": "System Network Configuration Discovery",
+			"technique_id": "T1016"
+		},
+		"agent_reported_time": "2026-05-15T11:57:14Z"
+	},
+	{
+		"id": 1,
+		"command": "ps -aux",
+		"plaintext_command": "ps -aux",
+		"delegated_timestamp": "2026-05-15T11:57:15Z",
+		"collected_timestamp": "2026-05-15T11:58:05Z",
+		"finished_timestamp": "2026-05-15T11:58:05Z",
+		"status": 0,
+		"platform": "linux",
+		"executor": "sh",
+		"pid": 2463,
+		"agent_metadata": {
+			"paw": "dprnmw",
+			"group": "red",
+			"architecture": "amd64",
+			"username": "osboxes",
+			"location": "/home/osboxes/splunkd",
+			"pid": 1927,
+			"ppid": 1886,
+			"privilege": "User",
+			"host": "0SC",
+			"contact": "HTTP",
+			"created": "2026-05-15T11:01:45Z"
+		},
+		"ability_metadata": {
+			"ability_id": "a353cf7a-2179-4775-bbe6-e2621f7a7e60",
+			"ability_name": "Process Discovery",
+			"ability_description": "Enumerate running processes"
+		},
+		"operation_metadata": {
+			"operation_name": "APT29_Simulation",
+			"operation_start": "2026-05-15T11:57:05Z",
+			"operation_adversary": "APT29 – Credential Discovery"
+		},
+		"attack_metadata": {
+			"tactic": "discovery",
+			"technique_name": "Process Discovery",
+			"technique_id": "T1057"
+		},
+		"agent_reported_time": "2026-05-15T11:58:05Z"
+	},
+	{
+		"id": 2,
+		"command": "cut -d: -f1 /etc/passwd",
+		"plaintext_command": "cut -d: -f1 /etc/passwd",
+		"delegated_timestamp": "2026-05-15T11:58:10Z",
+		"collected_timestamp": "2026-05-15T11:58:50Z",
+		"finished_timestamp": "2026-05-15T11:58:50Z",
+		"status": 0,
+		"platform": "linux",
+		"executor": "sh",
+		"pid": 2470,
+		"agent_metadata": {
+			"paw": "dprnmw",
+			"group": "red",
+			"architecture": "amd64",
+			"username": "osboxes",
+			"location": "/home/osboxes/splunkd",
+			"pid": 1927,
+			"ppid": 1886,
+			"privilege": "User",
+			"host": "0SC",
+			"contact": "HTTP",
+			"created": "2026-05-15T11:01:45Z"
+		},
+		"ability_metadata": {
+			"ability_id": "803ed47b-391e-4e47-a3c2-0eb66f5770eb",
+			"ability_name": "Local Account Discovery",
+			"ability_description": "Enumerate all local user accounts from /etc/passwd"
+		},
+		"operation_metadata": {
+			"operation_name": "APT29_Simulation",
+			"operation_start": "2026-05-15T11:57:05Z",
+			"operation_adversary": "APT29 – Credential Discovery"
+		},
+		"attack_metadata": {
+			"tactic": "discovery",
+			"technique_name": "Account Discovery: Local Account",
+			"technique_id": "T1087.001"
+		},
+		"agent_reported_time": "2026-05-15T11:58:50Z"
+	},
+	{
+		"id": 3,
+		"command": "getent passwd | awk -F: '$3==0 {print $1}'",
+		"plaintext_command": "getent passwd | awk -F: '$3==0 {print $1}'",
+		"delegated_timestamp": "2026-05-15T11:58:55Z",
+		"collected_timestamp": "2026-05-15T11:59:30Z",
+		"finished_timestamp": "2026-05-15T11:59:30Z",
+		"status": 0,
+		"platform": "linux",
+		"executor": "sh",
+		"pid": 2476,
+		"agent_metadata": {
+			"paw": "dprnmw",
+			"group": "red",
+			"architecture": "amd64",
+			"username": "osboxes",
+			"location": "/home/osboxes/splunkd",
+			"pid": 1927,
+			"ppid": 1886,
+			"privilege": "User",
+			"host": "0SC",
+			"contact": "HTTP",
+			"created": "2026-05-15T11:01:45Z"
+		},
+		"ability_metadata": {
+			"ability_id": "5c5d8fb5-a0d5-407e-a9c8-c16618cb898c",
+			"ability_name": "Logged-in Users with UID 0",
+			"ability_description": "Identify currently logged-in users with root privileges"
+		},
+		"operation_metadata": {
+			"operation_name": "APT29_Simulation",
+			"operation_start": "2026-05-15T11:57:05Z",
+			"operation_adversary": "APT29 – Credential Discovery"
+		},
+		"attack_metadata": {
+			"tactic": "discovery",
+			"technique_name": "Account Discovery: Local Account",
+			"technique_id": "T1087.001"
+		},
+		"agent_reported_time": "2026-05-15T11:59:30Z"
+	},
+	{
+		"id": 4,
+		"command": "last -a | grep -v reboot",
+		"plaintext_command": "last -a | grep -v reboot",
+		"delegated_timestamp": "2026-05-15T11:59:35Z",
+		"collected_timestamp": "2026-05-15T12:00:19Z",
+		"finished_timestamp": "2026-05-15T12:00:19Z",
+		"status": 0,
+		"platform": "linux",
+		"executor": "sh",
+		"pid": 2486,
+		"agent_metadata": {
+			"paw": "dprnmw",
+			"group": "red",
+			"architecture": "amd64",
+			"username": "osboxes",
+			"location": "/home/osboxes/splunkd",
+			"pid": 1927,
+			"ppid": 1886,
+			"privilege": "User",
+			"host": "0SC",
+			"contact": "HTTP",
+			"created": "2026-05-15T11:01:45Z"
+		},
+		"ability_metadata": {
+			"ability_id": "921f2fb2-4dc8-4189-b34e-12c56e0f0aa7",
+			"ability_name": "Users with Remote Login History",
+			"ability_description": "Show users who have logged in remotely, excluding reboot entries"
+		},
+		"operation_metadata": {
+			"operation_name": "APT29_Simulation",
+			"operation_start": "2026-05-15T11:57:05Z",
+			"operation_adversary": "APT29 – Credential Discovery"
+		},
+		"attack_metadata": {
+			"tactic": "discovery",
+			"technique_name": "Account Discovery: Local Account",
+			"technique_id": "T1087.001"
+		},
+		"agent_reported_time": "2026-05-15T12:00:19Z"
+	},
+	{
+		"id": 5,
+		"command": "find /home -name \"id_rsa\" 2>/dev/null || true",
+		"plaintext_command": "find /home -name \"id_rsa\" 2>/dev/null || true",
+		"delegated_timestamp": "2026-05-15T12:00:20Z",
+		"collected_timestamp": "2026-05-15T12:01:17Z",
+		"finished_timestamp": "2026-05-15T12:01:17Z",
+		"status": 0,
+		"platform": "linux",
+		"executor": "sh",
+		"pid": 2506,
+		"agent_metadata": {
+			"paw": "dprnmw",
+			"group": "red",
+			"architecture": "amd64",
+			"username": "osboxes",
+			"location": "/home/osboxes/splunkd",
+			"pid": 1927,
+			"ppid": 1886,
+			"privilege": "User",
+			"host": "0SC",
+			"contact": "HTTP",
+			"created": "2026-05-15T11:01:45Z"
+		},
+		"ability_metadata": {
+			"ability_id": "f30967b4-378e-42dc-886c-760a190dd3c6",
+			"ability_name": "Credential File Discovery",
+			"ability_description": "Locate KeePass databases and SSH private keys on disk"
+		},
+		"operation_metadata": {
+			"operation_name": "APT29_Simulation",
+			"operation_start": "2026-05-15T11:57:05Z",
+			"operation_adversary": "APT29 – Credential Discovery"
+		},
+		"attack_metadata": {
+			"tactic": "credential-access",
+			"technique_name": "Unsecured Credentials: Credentials In Files",
+			"technique_id": "T1552.001"
+		},
+		"agent_reported_time": "2026-05-15T12:01:17Z"
+	}
+]
